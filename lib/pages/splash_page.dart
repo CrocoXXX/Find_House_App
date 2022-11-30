@@ -1,3 +1,4 @@
+import 'package:find_house_app/pages/home_page.dart';
 import 'package:find_house_app/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +48,14 @@ class SplashPage extends StatelessWidget {
                     height: 50,
                     margin: const EdgeInsets.only(top: 40),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        );
+                      },
                       style: TextButton.styleFrom(
                         backgroundColor: purpleColor,
                         shape: RoundedRectangleBorder(
