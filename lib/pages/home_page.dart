@@ -2,6 +2,7 @@ import 'package:find_house_app/models/city_model.dart';
 import 'package:find_house_app/models/space_model.dart';
 import 'package:find_house_app/models/tips_model.dart';
 import 'package:find_house_app/theme.dart';
+import 'package:find_house_app/widgets/bottom_navbar_item.dart';
 import 'package:find_house_app/widgets/city_card.dart';
 import 'package:find_house_app/widgets/space_card.dart';
 import 'package:find_house_app/widgets/tips_card.dart';
@@ -223,7 +224,48 @@ class HomePage extends StatelessWidget {
                 updatedAt: '11 Dec',
               ),
             ),
+            const SizedBox(height: 100),
           ],
+        ),
+      );
+    }
+
+    Widget bottomNavbar() {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 30),
+        child: Container(
+          width: MediaQuery.of(context).size.width - (2 * 24),
+          height: 65,
+          margin: const EdgeInsets.only(left: 24),
+          decoration: BoxDecoration(
+            color: const Color(0xffF6F7F8),
+            borderRadius: BorderRadius.circular(23),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              BottomNavbarItem(
+                index: 1,
+                imageUrl: 'assets/icon_home.png',
+                // isActive: true,
+              ),
+              BottomNavbarItem(
+                index: 2,
+                imageUrl: 'assets/icon_email.png',
+                // isActive: false,
+              ),
+              BottomNavbarItem(
+                index: 3,
+                imageUrl: 'assets/icon_card.png',
+                // isActive: false,
+              ),
+              BottomNavbarItem(
+                index: 4,
+                imageUrl: 'assets/icon_love.png',
+                // isActive: false,
+              ),
+            ],
+          ),
         ),
       );
     }
@@ -243,6 +285,8 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: bottomNavbar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
