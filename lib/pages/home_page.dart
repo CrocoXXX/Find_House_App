@@ -271,7 +271,7 @@ class HomePage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: const Color(0xffFFFFFF),
+      backgroundColor: whiteColor,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
