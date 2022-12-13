@@ -1,6 +1,8 @@
+import 'package:find_house_app/pages/error_page.dart';
 import 'package:find_house_app/theme.dart';
 import 'package:find_house_app/widgets/facility_item.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailsPage extends StatelessWidget {
   const DetailsPage({Key? key}) : super(key: key);
@@ -194,9 +196,27 @@ class DetailsPage extends StatelessWidget {
                     color: const Color(0xff7A7E86),
                   ),
                 ),
-                Image.asset(
-                  'assets/btn_map.png',
-                  width: 40,
+                InkWell(
+                  onTap: () async {
+                    final url =
+                        // Uri.parse('https://goo.gl/maps/SyZx2yjWB1yR6AeH8');
+                        Uri.parse('qwertyuiop');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
+                    } else {
+                      // throw 'Could not lauch $url';
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ErrorPage(),
+                        ),
+                      );
+                    }
+                  },
+                  child: Image.asset(
+                    'assets/btn_map.png',
+                    width: 40,
+                  ),
                 ),
               ],
             ),
@@ -211,7 +231,15 @@ class DetailsPage extends StatelessWidget {
         width: MediaQuery.of(context).size.width - (2 * 24),
         height: 100,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () async {
+            // To open the default phone app
+            final url = Uri.parse('tel:+123 456 789');
+            if (await canLaunchUrl(url)) {
+              await launchUrl(url);
+            } else {
+              throw 'Could not Lauch $url';
+            }
+          },
           style: TextButton.styleFrom(
             backgroundColor: purpleColor,
             shape: RoundedRectangleBorder(
